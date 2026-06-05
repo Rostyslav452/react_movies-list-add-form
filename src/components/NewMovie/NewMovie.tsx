@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { TextField } from '../TextField';
 import React from 'react';
+import { Movie } from '../../types/Movie';
 
 function URLValidation(field: string) {
   const regex = new RegExp(
@@ -12,7 +13,9 @@ function URLValidation(field: string) {
   return regex.test(field);
 }
 
-export const NewMovie = ({ onAdd }) => {
+type NewMovieParams = { onAdd: (movie: Movie) => void };
+
+export const NewMovie = ({ onAdd }: NewMovieParams) => {
   // Increase the count after successful form submission
   // to reset touched status of all the `Field`s
   const [count, setCount] = useState(0);
