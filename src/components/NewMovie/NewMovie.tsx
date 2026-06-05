@@ -33,7 +33,7 @@ export const NewMovie = ({ onAdd }: NewMovieParams) => {
     setImdbId('');
   };
 
-  const submitHandler = (event: React.MouseEvent<HTMLButtonElement>) => {
+  const submitHandler = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
     onAdd({ title, description, imgUrl, imdbUrl, imdbId });
@@ -42,7 +42,7 @@ export const NewMovie = ({ onAdd }: NewMovieParams) => {
   };
 
   return (
-    <form className="NewMovie" key={count}>
+    <form className="NewMovie" key={count} onSubmit={submitHandler}>
       <h2 className="title">Add a movie</h2>
 
       <TextField
@@ -102,7 +102,6 @@ export const NewMovie = ({ onAdd }: NewMovieParams) => {
             type="submit"
             data-cy="submit-button"
             className="button is-link"
-            onSubmit={submitHandler}
             disabled={
               !title.trim() ||
               !imgUrl.trim() ||
