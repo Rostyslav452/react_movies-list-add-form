@@ -102,8 +102,13 @@ export const NewMovie = ({ onAdd }: NewMovieParams) => {
             type="submit"
             data-cy="submit-button"
             className="button is-link"
-            onClick={submitHandler}
-            disabled={!title || !imgUrl || !imdbUrl || !imdbId}
+            onSubmit={submitHandler}
+            disabled={
+              !title.trim() ||
+              !imgUrl.trim() ||
+              !imdbUrl.trim() ||
+              !imdbId.trim()
+            }
           >
             Add
           </button>
